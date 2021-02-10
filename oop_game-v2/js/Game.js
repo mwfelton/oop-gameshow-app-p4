@@ -2,16 +2,28 @@
  * Project 4 - OOP Game App
  * Game.js */
 
-
+ 
 
  class Game {
     constructor(){
     this.missed = 0;
-    this.phrases = ['Guess me you bitch','super farty','i love karuneshwari', 'hans zimmer is good', 'i bow to sadhguru'];
+    this.phrases = createPhrases()
     this.activePhrase = null;
     }
 
-    startGame(){}
+          /**
+    * Creates phrases for use in game
+    * return {array} An array of phrases that could be used in the game
+    */
+   createPhrases() {
+    const phraseArray = ['Guess me you dingdong', 'hey super farty', 'i love karuneshwari', 'hans zimmer is good', 'i bow to sadhguru']
+
+    const forGame = phraseArray.map(arr => new Phrase(arr), []);
+    return forGame
+    }
+
+
+    // startGame(){}
    
 
 

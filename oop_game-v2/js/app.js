@@ -8,11 +8,10 @@
 let phrase = new Phrase('Life is like a box of chocolates');
 console.log(`Phrase - phrase: ${phrase.phrase}`)
 
-// const game = new Game();
-// game.phrases.forEach((phrase, index) => {
-//     console.log(`Phrase ${index} - phrase: ${phrase}`);
-// });
-// console.log('fish')
+const game = new Game();
+game.phrases.forEach((phrase, index) => {
+    console.log(`Phrase ${index} - phrase: ${phrase}`);
+});
 
 // const logPhrase = (phrase) => {
 //     console.log(`Phrase - phrase: `,phrase);
@@ -24,4 +23,5 @@ console.log(`Phrase - phrase: ${phrase.phrase}`)
 //     logPhrase(game.getRandomPhrase());
 //     logPhrase(game.getRandomPhrase());
 
-console.log(phraseDiv)
+// const game = new Game();
+// game.getRandomPhrase().addPhraseToDisplay();
