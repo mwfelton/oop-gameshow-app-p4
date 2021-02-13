@@ -15,9 +15,8 @@ class Phrase {
     }
 
     addPhraseToDisplay(){
-
         const letter = this.phrase.split('');
-        for (let i = 0; i < letter.length; i += 1) {
+        for (let i = 0; i < letter.length; i++) {
             const li = document.createElement('li');
             if (letter[i] === ' ') {
                 li.classList = 'space';

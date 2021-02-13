@@ -2,12 +2,17 @@
  * Project 4 - OOP Game App
  * Game.js */
 
- 
+// let phrase1 = new Phrase('Guess me you dingdong');
+// let phrase2 = new Phrase('hey super coder')
+// let phrase3 = new Phrase('i love karuneshwari')
+// let phrase4 = new Phrase('hans zimmer is good')
+// let phrase5 = new Phrase('i bow to sadhguru')
+
 
  class Game {
     constructor(){
     this.missed = 0;
-    this.phrases = createPhrases()
+    this.phrases = this.createPhrases()
     this.activePhrase = null;
     }
 
@@ -22,8 +27,22 @@
     return forGame
     }
 
+    getRandomPhrase(){
+        const random = game.phrases[Math.floor(Math.random() * game.phrases.length)];
+        return random
+    }
+   
+    startGame(){
+        document.getElementById('overlay').style.display = 'none';
+        let game = new Game();
+        // game.getRandomPhrase().addPhraseToDisplay();
+        // game.activePhrase
+        this.activePhrase = this.getRandomPhrase().addPhraseToDisplay();
+    }
 
-    // startGame(){}
+
+
+    
    
 
 
@@ -32,10 +51,7 @@
 
     // startGame(): hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
    
-    getRandomPhrase(){
-        const random = game.phrases[Math.floor(Math.random() * game.phrases.length)];
-        return random
-    }
+
     // this method randomly retrieves one of the phrases stored in the phrases array and returns it.
 
     handleInteraction(){}
@@ -53,11 +69,6 @@
     gameOver(){}
     // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
 
-
  };
- const overLay = document.getElementById('overlay');
-        const button = document.getElementById('btn__reset');
 
-        button.addEventListener('click', () => {
-            overLay.style.visibility = 'hidden';
-        });
+ 
