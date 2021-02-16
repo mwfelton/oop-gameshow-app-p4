@@ -28,30 +28,35 @@
 // let game = new Game();
 // game.getRandomPhrase().addPhraseToDisplay();
 
+// function testert(){
+// const game = new Game();
+// game.startGame();
+// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+// }
 
-const game = new Game();
-game.startGame();
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+// testert()
+// Test Code End
 
+// Step 8
 
-
-
-
-
-
-
-
-
-
-
+// let game = null;
 // const button = document.getElementById('btn__reset');
-// // button.addEventListener('click', ( )=> {
-// //     game.startGame()
-// // });
 
-
-// button.addEventListener('click', (evt) => {
-//     game.startGame()
-//     evt.target.style.display = 'none';
-//     document.getElementById('play-area').style.opacity = '1';
+// button.addEventListener('click', function(){
+//     game = new Game().startGame()
 // });
+
+let game = new Game()
+const button = document.getElementById('btn__reset');
+
+button.addEventListener('click', function(){
+    game.startGame()
+});
+
+const keys = document.querySelectorAll('.keyrow button')
+console.log(keys)
+
+keys.forEach(item => item.addEventListener('click', function(){
+    game.handleInteraction(item)
+}))
+

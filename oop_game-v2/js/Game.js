@@ -13,13 +13,14 @@
     constructor(){
     this.missed = 0;
     this.phrases = this.createPhrases()
-    this.activePhrase = null;
+    this.activePhrase = null
     }
 
           /**
     * Creates phrases for use in game
     * return {array} An array of phrases that could be used in the game
     */
+
    createPhrases() {
     const phraseArray = ['Guess me you dingdong', 'hey super farty', 'i love karuneshwari', 'hans zimmer is good', 'i bow to sadhguru']
 
@@ -28,6 +29,7 @@
     }
 
     getRandomPhrase(){
+        let game = new Game();
         const random = game.phrases[Math.floor(Math.random() * game.phrases.length)];
         return random
     }
@@ -35,39 +37,100 @@
     startGame(){
         document.getElementById('overlay').style.display = 'none';
         let game = new Game();
-        // game.getRandomPhrase().addPhraseToDisplay();
-        // game.activePhrase
-        this.activePhrase = this.getRandomPhrase().addPhraseToDisplay();
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
+
+        // game.activePhrase = this.getRandomPhrase().addPhraseToDisplay(); <= what is this nonsense they gave us in the study guide?!?
     }
 
+    /**
+    * Checks for winning move
+    * @return {boolean} True if game has been won, false if game wasn't
+    won
+    */
 
+    checkForWin() {
+        
+        const phraseLi = document.querySelectorAll('#phrase li')
+        for (let i = 0; i < phraseLi.length; i++){
+            if (!phraseLi[i].classList.contains('hide')){
+                return true
+            } else {
+                return false
+            }
+        }
+    }
 
+        /**
+    * Increases the value of the missed property
+    * Removes a life from the scoreboard
+    * Checks if player has remaining lives and ends game if player is out
+    */
+        
+   removeLife() {
+    this.missed ++;
+    let hearts = document.querySelector('img[src="images/liveHeart.png"]')
+    if (this.missed < 6) {
+        hearts.src = 'images/lostHeart.png';
+    } if (this.missed === 5){
+        game.gameOver(true);
+    }
+ }
+
+        // removeLife() {
+        //    this.missed ++;
+        //    let hearts = document.querySelector('img[src="images/liveHeart.png"]')
+        //    if (this.missed < 6) {
+        //        hearts.src = 'images/lostHeart.png';
+        //    } else if (this.missed === 5){
+        //        this.gameOver(false);
+        //    }
+        // }
+
+    /**
+    * Displays game over message
+    */
+            
+        gameOver(won){
+
+            const overlay = document.getElementById('overlay')
+            const h1 =document.getElementById('game-over-message')
+
+            if (won){
+                overlay.style.display = '';                
+                h1.textContent = 'well done. you are not terrible';
+                overlay.className = 'win'
+            } else {
+                h1.textContent = 'Unfortunately.. you are a loser';
+                overlay.className = 'lose'
+            }
+        }
+  
+//**
+// * Handles onscreen keyboard button clicks
+// * @param (HTMLButtonElement) button - The clicked button element
+// */
+
+handleInteraction(button) {
+    console.log(button);
+    const btnLetter = button.textContent
+    button.disabled = true
     
+
+    if (!this.activePhrase.checkLetter(btnLetter)){
+        button.className = 'wrong'
+        this.removeLife()
+        game.gameOver(game.checkForWin())
+    } else {
+        button.className = 'chosen'
+        this.activePhrase.showMatchedLetter(btnLetter)
+        game.gameOver(game.checkForWin())
+    }
+    };
+  
+
    
-
-
-
-
-
-    // startGame(): hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
-   
-
-    // this method randomly retrieves one of the phrases stored in the phrases array and returns it.
-
-    handleInteraction(){}
-    // this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
-    // Disable the selected letter’s onscreen keyboard button.
-    // If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard button and call the removeLife() method.
-    // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
     
-    removeLife(){}
-    // this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
-    
-    checkForWin(){}
-    // this method checks to see if the player has revealed all of the letters in the active phrase.
-    
-    gameOver(){}
-    // this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
 
  };
 
