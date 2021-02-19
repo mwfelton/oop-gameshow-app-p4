@@ -49,17 +49,14 @@
     won
     */
 
-    checkForWin() {
-        
-        const phraseLi = document.querySelectorAll('#phrase li')
-        for (let i = 0; i < phraseLi.length; i++){
-            if (!phraseLi[i].classList.contains('hide')){
-                return true
-            } else {
-                return false
-            }
-        }
+   checkForWin() {
+    const phraseLi = document.querySelectorAll('.hide')
+    if (phraseLi.length === 0){
+      return true
+    } else {
+      return false
     }
+  };
 
         /**
     * Increases the value of the missed property
@@ -77,34 +74,29 @@
     }
  }
 
-        // removeLife() {
-        //    this.missed ++;
-        //    let hearts = document.querySelector('img[src="images/liveHeart.png"]')
-        //    if (this.missed < 6) {
-        //        hearts.src = 'images/lostHeart.png';
-        //    } else if (this.missed === 5){
-        //        this.gameOver(false);
-        //    }
-        // }
-
     /**
     * Displays game over message
     */
             
-        gameOver(won){
+    gameOver(won){
 
-            const overlay = document.getElementById('overlay')
-            const h1 =document.getElementById('game-over-message')
+        const overlay = document.getElementById('overlay')
+        const h1 =document.getElementById('game-over-message')
 
-            if (won){
-                overlay.style.display = '';                
-                h1.textContent = 'well done. you are not terrible';
-                overlay.className = 'win'
-            } else {
-                h1.textContent = 'Unfortunately.. you are a loser';
-                overlay.className = 'lose'
-            }
+        if (won){
+            overlay.style.display = '';                
+            h1.textContent = 'well done. you are not terrible';
+            overlay.className = 'win'
+            
+            button.addEventListener('click', function(){
+                game.restart()
+            });
+            
+        } else {
+            h1.textContent = 'Unfortunately.. you are a loser';
+            overlay.className = 'lose'
         }
+    }
   
 //**
 // * Handles onscreen keyboard button clicks
@@ -112,10 +104,8 @@
 // */
 
 handleInteraction(button) {
-    console.log(button);
     const btnLetter = button.textContent
     button.disabled = true
-    
 
     if (!this.activePhrase.checkLetter(btnLetter)){
         button.className = 'wrong'
@@ -127,11 +117,24 @@ handleInteraction(button) {
         game.gameOver(game.checkForWin())
     }
     };
-  
 
-   
+
+restart(){
+
+    const phraseDiv = document.querySelector('#phrase ul');
+    phraseDiv.innerHTML = '';
+
+    const keys = document.querySelectorAll('.keyrow button')
+    keys.forEach(item => item.disabled = false);
+    keys.forEach(item => item.className = 'key');
+
+    this.missed = 0
+
+    let hearts = document.querySelectorAll('img[src="images/lostHeart.png"]')
     
+        hearts.forEach(item => item.src ='images/liveHeart.png')
 
- };
+    this.startGame()
 
- 
+}
+}

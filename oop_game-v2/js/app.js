@@ -60,3 +60,4 @@ keys.forEach(item => item.addEventListener('click', function(){
     game.handleInteraction(item)
 }))
 
+

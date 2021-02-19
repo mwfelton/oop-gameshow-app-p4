@@ -2,7 +2,7 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 //  variable for addphrasetodisplay method
-const phraseDiv = document.getElementById('phrase');
+const phraseDiv = document.querySelector('#phrase ul');
 // const phraseUl = phraseDiv.children
 console.log(phraseDiv)
 
