@@ -60,4 +60,19 @@ keys.forEach(item => item.addEventListener('click', function(){
     game.handleInteraction(item)
 }))
 
+document.addEventListener('keydown', (e) => {
+    for (key of keys){
+        if (e.key === key.textContent){
+            game.handleInteraction(key)
+        }
+    }    
+})
 
+
+
+
+// You can add the eventlistener in the app.js file below the eventlistener on line 59, 
+
+// iterate through the keys variable, you're going to want to check if the key that's pressed is equal to the key textContent and if it's not already disabled (this will prevent the loss of life if the user clicks a disabled letter). 
+
+// In the if statement you'll call the game.handleInteraction method passing it the key iteration. Personally, I found it easier to use a for-of loop for this but it's up to you what feels comfortable.
