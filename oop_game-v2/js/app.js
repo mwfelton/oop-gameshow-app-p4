@@ -46,33 +46,40 @@
 //     game = new Game().startGame()
 // });
 
-let game = new Game()
+
+// const overlay = document.getElementById('overlay')
+// overlay.style.backgroundImage = "url('images/fail-bg.jpg')"
+
+// console.log(overlay)
+
+// if (overlay.className === 'lose'){
+//     console.log('partyyy')
+
+// }
+
+
+
+let game; 
 const button = document.getElementById('btn__reset');
 
 button.addEventListener('click', function(){
+    game = new Game()
     game.startGame()
 });
 
 const keys = document.querySelectorAll('.keyrow button')
-console.log(keys)
 
 keys.forEach(item => item.addEventListener('click', function(){
+    console.log(item)
     game.handleInteraction(item)
 }))
 
 document.addEventListener('keydown', (e) => {
-    for (key of keys){
-        if (e.key === key.textContent){
+    keys.forEach(key => {
+        if (e.key === key.textContent && !key.disabled){
             game.handleInteraction(key)
         }
-    }    
+    })  
 })
 
 
-
-
-// You can add the eventlistener in the app.js file below the eventlistener on line 59, 
-
-// iterate through the keys variable, you're going to want to check if the key that's pressed is equal to the key textContent and if it's not already disabled (this will prevent the loss of life if the user clicks a disabled letter). 
-
-// In the if statement you'll call the game.handleInteraction method passing it the key iteration. Personally, I found it easier to use a for-of loop for this but it's up to you what feels comfortable.

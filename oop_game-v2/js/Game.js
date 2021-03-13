@@ -95,6 +95,7 @@
         } else {
             h1.textContent = 'Unfortunately.. you are a loser';
             overlay.className = 'lose'
+            overlay.style.backgroundImage = "url('images/fail-bg.jpg')"
         }
     }
   
@@ -117,6 +118,11 @@ handleInteraction(button) {
         game.gameOver(game.checkForWin())
     }
     };
+
+keydownInteraction(key){
+    key.disabled = true
+    key.style.backgroundColor = 'pink'
+}
 
 
 restart(){
