@@ -87,6 +87,8 @@
             overlay.style.display = '';                
             h1.textContent = 'well done. you are not terrible';
             overlay.className = 'win'
+            overlay.style.backgroundImage = "url('images/win-bg.jpeg')"
+
             
             button.addEventListener('click', function(){
                 game.restart()
