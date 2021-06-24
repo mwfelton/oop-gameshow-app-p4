@@ -22,7 +22,14 @@
     */
 
    createPhrases() {
-    const phraseArray = ['Guess me you dingdong', 'hey super farty', 'i love karuneshwari', 'hans zimmer is good', 'i bow to sadhguru']
+    const phraseArray = [
+        'What is your original face before you were born', 
+        'When you can do nothing what can you do', 
+        'What is the sound of one hand clapping', 
+        'The worst crime in the world is indecision', 
+        'Learning to listen is the essence of intelligent living',
+        'Get out of your head and get into your heart. Think less, feel more'
+    ]
 
     const forGame = phraseArray.map(arr => new Phrase(arr), []);
     return forGame
@@ -85,7 +92,7 @@
 
         if (won){
             overlay.style.display = '';                
-            h1.textContent = 'well done. you are not terrible';
+            h1.textContent = 'well done. you are on the path';
             overlay.className = 'win'
             overlay.style.backgroundImage = "url('images/win-bg.jpeg')"
 
@@ -95,7 +102,7 @@
             });
             
         } else {
-            h1.textContent = 'Unfortunately.. you are a loser';
+            h1.textContent = 'what you are seeking is not far away';
             overlay.className = 'lose'
             overlay.style.backgroundImage = "url('images/fail-bg.jpg')"
         }

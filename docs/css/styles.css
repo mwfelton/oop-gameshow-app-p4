@@ -1,5 +1,8 @@
 /* Main styles */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karma:wght@300&display=swap');
+
 
 /* Variables */
 
@@ -11,7 +14,7 @@
   --color-neutral-light: #D2D2D2;
   --color-keys: #37474F;
   --color-keys-light: #E5E5E5;
-  --font-size-large: 60px;
+  --font-size-large: 45px;
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
 }
@@ -20,8 +23,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
+  font-family: 'Karma', serif;}
 
 body {
   justify-content: space-evenly;
@@ -37,13 +39,18 @@ li, ol, ul {
 
 h2 {
   margin: 0;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: var(--font-size-large);
   margin: 0;
+  letter-spacing: 2px;
 }
 
 h1 {
   font-size: 30px;
+}
+
+#btn__reset {
+  border-radius: 50%;
 }
 
 button {
@@ -58,10 +65,15 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
   cursor: pointer;
+  letter-spacing: 1px;
 }
 
-#btn__reset {
-	width: 200px;
+#btn__reset{
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+	width: 150px;
+  height: 150px;
 	margin: 0 auto;
 }
 
@@ -89,7 +101,6 @@ button {
   color: #3a3f58;
 }
 
-
 /* Phrase */
 
 .letter {
@@ -106,8 +117,6 @@ button {
 .space {
   width: 15px;
 }
-
-
 
 .show {
   color: #fff;
@@ -180,7 +189,9 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  /* background-color: #3a3f58; */
+  background-image: url("bg-image-p4.jpeg");
+  background-position: 15% 20%;
 }
 
 .start a {
@@ -201,4 +212,36 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+@media (max-width: 670px) {
+  .letter  {
+    height: 35px;
+    width: 35px;
+    padding: 20px 1px 0 1px;
+    margin-right: 2px;
+    vertical-align: middle
+  }
+
+  .show  {
+    font-size: 10px;
+    height: 35px;
+    width: 35px;
+    padding: 20px 1px 0 1px;
+    margin-right: 2px;
+    text-align: center;
+    vertical-align: middle
+  }
+
+  .li {
+    text-align: center;
+  }
+
+  ul {
+
+
+    /* line-height is how you vertically align text. It is pretty standard and I don't consider it a "hack". Just add line-height: 100px to your ul.catBlock li and it will be fine. */
+
+  }
+
 }
